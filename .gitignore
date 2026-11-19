@@ -1,0 +1,8 @@
+config.php
+storage/logs/*
+storage/sessions/*
+storage/mock_bills/*
+storage/receipts/*
+uploads/*
+!**/.gitkeep
+!**/.htaccess

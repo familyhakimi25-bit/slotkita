@@ -1,0 +1,147 @@
+/* SlotKita - asas reka bentuk (token, tipografi, butang, borang) */
+:root {
+  --ink: #16130f;
+  --ink-2: #3a342d;
+  --muted: #6b6259;
+  --line: #e9e2d8;
+  --line-2: #f2ede6;
+  --paper: #fbf8f3;
+  --card: #ffffff;
+  --brand: #ff5a1f;
+  --brand-soft: #ffe8dc;
+  --brand-deep: #b93a0c;      /* teks oren atas latar cerah: kontras 5.3:1 */
+  --ok: #117a4a;
+  --ok-soft: #dcf5e7;
+  --warn: #8a5a00;
+  --warn-soft: #fff1cc;
+  --bad: #b42318;
+  --bad-soft: #fde4e1;
+  --info: #1f4fb5;
+  --info-soft: #e1eafd;
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow: 0 1px 2px rgba(22, 19, 15, .06), 0 8px 24px -12px rgba(22, 19, 15, .18);
+  --shadow-lg: 0 2px 4px rgba(22, 19, 15, .05), 0 24px 60px -24px rgba(22, 19, 15, .35);
+  --font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+img, svg, video { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3, h4 { line-height: 1.15; margin: 0 0 .5em; letter-spacing: -.02em; }
+h1 { font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800; }
+h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; }
+h3 { font-size: 1.1rem; font-weight: 700; }
+p { margin: 0 0 1em; }
+small, .small { font-size: .875rem; }
+.muted { color: var(--muted); }
+.center { text-align: center; }
+.nowrap { white-space: nowrap; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; border-radius: 6px; }
+
+.ic { width: 20px; height: 20px; flex: none; }
+.ic-sm { width: 16px; height: 16px; flex: none; }
+.ic-lg { width: 28px; height: 28px; flex: none; }
+
+/* ---------- Butang ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5em;
+  min-height: 44px; padding: .65em 1.2em;
+  font: 700 .95rem/1.2 var(--font);
+  border: 1.5px solid transparent; border-radius: 999px;
+  background: var(--ink); color: #fff;
+  text-decoration: none; cursor: pointer;
+  transition: transform .12s ease, background .15s ease, box-shadow .15s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px -8px rgba(22,19,15,.5); }
+.btn:active { transform: translateY(0); }
+.btn[disabled], .btn.is-disabled { opacity: .45; pointer-events: none; }
+.btn-brand { background: var(--brand); color: var(--ink); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn-ghost:hover { background: var(--card); }
+.btn-soft { background: var(--line-2); color: var(--ink); }
+.btn-danger { background: var(--bad); color: #fff; }
+.btn-ok { background: var(--ok); color: #fff; }
+.btn-sm { min-height: 36px; padding: .4em .85em; font-size: .85rem; }
+.btn-lg { min-height: 54px; padding: .8em 1.6em; font-size: 1.05rem; }
+.btn-block { width: 100%; }
+.btn-icon { width: 40px; min-height: 40px; padding: 0; border-radius: 12px; }
+.link { color: var(--brand-deep); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; background: none; border: 0; padding: 0; font: inherit; cursor: pointer; }
+
+/* ---------- Borang ---------- */
+.field { display: grid; gap: .35rem; margin-bottom: 1rem; }
+.field > label, .label { font-weight: 700; font-size: .9rem; }
+.hint { font-size: .82rem; color: var(--muted); }
+.input, input[type=text], input[type=email], input[type=password], input[type=tel], input[type=number],
+input[type=date], input[type=time], input[type=search], input[type=url], select, textarea {
+  width: 100%; min-height: 46px;
+  padding: .7em .9em;
+  font: 500 16px/1.3 var(--font); color: var(--ink);
+  background: #fff; border: 1.5px solid var(--line); border-radius: var(--radius-sm);
+  transition: border-color .15s, box-shadow .15s;
+}
+textarea { min-height: 96px; resize: vertical; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 4px rgba(255, 90, 31, .18); }
+input[type=color] { width: 56px; height: 46px; padding: 4px; border: 1.5px solid var(--line); border-radius: var(--radius-sm); background: #fff; }
+.input-group { display: flex; align-items: stretch; border: 1.5px solid var(--line); border-radius: var(--radius-sm); background: #fff; overflow: hidden; }
+.input-group:focus-within { border-color: var(--ink); box-shadow: 0 0 0 4px rgba(255, 90, 31, .18); }
+.input-group .addon { display: flex; align-items: center; padding: 0 .8em; background: var(--line-2); color: var(--muted); font-weight: 600; font-size: .9rem; white-space: nowrap; }
+.input-group input { border: 0; box-shadow: none !important; border-radius: 0; }
+.check { display: flex; align-items: center; gap: .6rem; font-weight: 600; cursor: pointer; }
+.check input { width: 20px; height: 20px; accent-color: var(--ink); }
+.row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1rem; }
+@media (max-width: 560px) { .row-2 { grid-template-columns: 1fr; } }
+
+/* ---------- Mesej ---------- */
+.alert { padding: .8rem 1rem; border-radius: var(--radius-sm); margin-bottom: 1rem; font-weight: 600; font-size: .95rem; border: 1px solid transparent; }
+.alert-ok { background: var(--ok-soft); color: var(--ok); border-color: #b5e6cb; }
+.alert-warn { background: var(--warn-soft); color: var(--warn); border-color: #f5dc94; }
+.alert-bad { background: var(--bad-soft); color: var(--bad); border-color: #f7c1bb; }
+.alert-info { background: var(--info-soft); color: var(--info); border-color: #c1d3fa; }
+
+/* ---------- Lencana ---------- */
+.badge { display: inline-flex; align-items: center; gap: .3em; padding: .2em .65em; border-radius: 999px; font-size: .78rem; font-weight: 700; background: var(--line-2); color: var(--ink-2); white-space: nowrap; }
+.badge-ok { background: var(--ok-soft); color: var(--ok); }
+.badge-warn { background: var(--warn-soft); color: var(--warn); }
+.badge-bad { background: var(--bad-soft); color: var(--bad); }
+.badge-info { background: var(--info-soft); color: var(--info); }
+.badge-brand { background: var(--brand-soft); color: var(--brand-deep); }
+.badge-ink { background: var(--ink); color: #fff; }
+
+/* ---------- Kad & jadual ---------- */
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem; box-shadow: 0 1px 2px rgba(22,19,15,.04); }
+.card + .card { margin-top: 1rem; }
+.card-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.card-head h2, .card-head h3 { margin: 0; }
+.table-wrap { overflow-x: auto; margin: 0 -1.25rem; padding: 0 1.25rem; }
+.table-wrap:has(.dropdown[open]) { overflow: visible; }
+table.table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.table th { text-align: left; font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 700; padding: .6rem .6rem; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.table td { padding: .75rem .6rem; border-bottom: 1px solid var(--line-2); vertical-align: middle; }
+.table tr:last-child td { border-bottom: 0; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.empty { text-align: center; padding: 2.5rem 1rem; color: var(--muted); }
+.empty .ic-lg { margin: 0 auto .75rem; color: var(--line); width: 44px; height: 44px; }
+
+.stack > * + * { margin-top: 1rem; }
+.flex { display: flex; align-items: center; gap: .75rem; }
+.flex-wrap { flex-wrap: wrap; }
+.between { justify-content: space-between; }
+.grow { flex: 1; min-width: 0; }
+
+.logo-mark { display: inline-flex; align-items: center; gap: .5rem; font-weight: 800; letter-spacing: -.03em; text-decoration: none; font-size: 1.2rem; }
+.logo-mark .dot { width: 30px; height: 30px; border-radius: 9px; background: var(--brand); display: grid; place-items: center; color: var(--ink); }
+.logo-mark .dot svg { width: 18px; height: 18px; }

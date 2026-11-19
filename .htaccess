@@ -1,0 +1,22 @@
+# SlotKita - Apache / cPanel
+Options -Indexes
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Folder & fail dalaman: tolak akses
+RewriteRule ^(lib|includes|storage|database|tools)(/|$) - [F,L]
+RewriteRule ^(config|config\.sample|bootstrap|router)\.php$ - [F,L]
+
+# slotkita.my/nama-kedai  ->  kedai.php?k=nama-kedai
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-z0-9][a-z0-9-]{1,39})/?$ kedai.php?k=$1 [L,QSA]
+</IfModule>
+
+ErrorDocument 404 /404.php
+
+<FilesMatch "\.(sql|md|log|json)$">
+  Require all denied
+</FilesMatch>
